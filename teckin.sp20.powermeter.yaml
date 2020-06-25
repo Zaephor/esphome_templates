@@ -1,0 +1,43 @@
+<<: !include common.yaml
+sensor: !include_dir_merge_list teckin.sp20.sensor
+
+debug:
+
+logger:
+  level: debug
+
+# GPIO0 - red led
+# GPIO2 - blue led
+
+status_led:
+  pin:
+    number: GPIO0
+    inverted: true
+
+switch:
+  - platform: gpio
+    id: led2
+    pin:
+      number: GPIO2
+      inverted: true
+  - platform: gpio
+    id: relay
+    restore_mode: "${relay_restore}"
+    internal: true
+    pin: GPIO4
+    name: "${display_name}"
+    on_turn_on:
+    - switch.turn_on: led2
+    on_turn_off:
+    - switch.turn_off: led2
+
+binary_sensor:
+  - platform: gpio
+    id: button
+    pin:
+      number: GPIO13
+      inverted: true
+    name: "${display_name} Button"
+    internal: true
+#    on_press:
+#      - switch.toggle: relay

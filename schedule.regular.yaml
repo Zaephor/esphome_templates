@@ -1,0 +1,17 @@
+sun:
+  latitude: !secret site_lat
+  longitude: !secret site_lon
+  on_sunset:
+  - then:
+    - switch.turn_on: relay
+
+time:
+- platform: sntp
+  id: sntp_time
+  timezone: !secret site_tz
+  on_time:
+  - seconds: 0
+    minutes: 0
+    hours: 23
+    then:
+    - switch.turn_off: relay

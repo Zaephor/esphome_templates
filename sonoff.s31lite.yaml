@@ -1,0 +1,25 @@
+<<: !include common.yaml
+sensor: !include_dir_merge_list sonoff.s31lite.sensor
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+switch:
+  - platform: gpio
+    name: "${display_name}"
+    pin: GPIO12
+    id: relay
+    restore_mode: "${relay_restore}"
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "${display_name} Button"
+    on_press:
+      - switch.toggle: relay
+    internal: true
