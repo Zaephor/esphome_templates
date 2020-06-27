@@ -1,0 +1,5 @@
+esphome:
+  name: ${id}
+  platform: ESP8266
+  board: ${board}
+  esp8266_restore_from_flash: true

@@ -1,0 +1,4 @@
+esphome:
+  name: ${id}
+  platform: ESP32
+  board: ${board}
