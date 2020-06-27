@@ -1,0 +1,55 @@
+<<: !include chip.esp8266.yaml
+<<: !include common.yaml
+sensor: !include_dir_merge_list nodemcu.v2.sensor
+
+# Custom-made garage door controller
+
+# Garage opening relay
+# Wired directly to the two wire leads of the garage, in parallel to any existing button control
+# Relay Signal -> NodeMCU Pin D1/GPIO5
+switch:
+- platform: gpio
+  pin: D1
+  id: relay
+  restore_mode: "ALWAYS_OFF"
+
+binary_sensor:
+# Garage "open" endstop switch
+# Either magnet or micro switch of some form, attached to be pressed when garage is open
+# Switch COM -> NodeMCU Pin D2/GPIO4
+# Switch COM -> 10k Ohm Resistor -> Ground
+# Switch NO -> NodeMCU Pin 3v3
+- platform: gpio
+  pin: D2
+  name: endstop_open
+
+# Garage "closed" endstop switch
+# Either magnet or micro switch of some form, attached to be pressed when garage is closed
+# Switch COM -> NodeMCU Pin D5/GPIO14
+# Switch COM -> 10k Ohm Resistor -> Ground
+# Switch NO -> NodeMCU Pin 3v3
+- platform: gpio
+  pin: D5
+  name: endstop_open
+
+# Garage door cover
+cover:
+- platform: endstop
+  name: "${display_name}"
+  optimistic: true
+  device_class: garage_door
+  max_duration: 4m
+
+  open_duration: 2m
+  open_endstop: endstop_open
+  open_action:
+  - switch.turn_on: relay
+  - delay: 0.1s
+  - switch.turn_off: relay
+
+  close_duration: 2m
+  close_endstop: endstop_close
+  close_action:
+  - switch.turn_on: relay
+  - delay: 0.1s
+  - switch.turn_off: relay
