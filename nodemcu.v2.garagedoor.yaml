@@ -13,6 +13,8 @@ switch:
   id: relay
   restore_mode: "ALWAYS_OFF"
 
+### Going to only monitor for "closed", will always assume open
+
 binary_sensor:
 # Garage "open" endstop switch
 # Either magnet or micro switch of some form, attached to be pressed when garage is open
@@ -34,20 +36,24 @@ binary_sensor:
 
 # Garage door cover
 cover:
-- platform: endstop
+- platform: template
   name: "${display_name}"
   device_class: garage
-  max_duration: 4min
+  optimistic: true
+  has_position: false
 
-  open_duration: 2min
-  open_endstop: endstop_open
+  lambda: |-
+      if (id(endstop_close).state) {
+        return COVER_CLOSED;
+      } else {
+        return COVER_OPEN;
+      }
+
   open_action:
   - switch.turn_on: relay
   - delay: 0.1s
   - switch.turn_off: relay
 
-  close_duration: 2min
-  close_endstop: endstop_close
   close_action:
   - switch.turn_on: relay
   - delay: 0.1s
