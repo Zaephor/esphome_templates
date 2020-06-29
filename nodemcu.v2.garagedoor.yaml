@@ -42,7 +42,7 @@ cover:
   optimistic: true
   has_position: false
 
-  lambda: |-
+  lambda: !lambda |-
       if (id(endstop_close).state) {
         return COVER_CLOSED;
       } else {
