@@ -2,6 +2,15 @@
 <<: !include common.yaml
 sensor: !include_dir_merge_list teckin.sp20.sensor
 
+# teckin1-pending.yaml
+#substitutions:
+#  id: teckin1
+#  plug_type: teckin.sp20
+#  board: esp01_1m
+#  display_name: "Teckin1"
+#  relay_restore: "RESTORE_DEFAULT_OFF"
+#<<: !include "esphome_templates/teckin.sp20.yaml"
+
 debug:
 
 logger:

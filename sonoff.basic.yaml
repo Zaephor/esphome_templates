@@ -2,6 +2,15 @@
 <<: !include common.yaml
 sensor: !include_dir_merge_list sonoff.basic.sensor
 
+# sonoff1-pending.yaml
+#substitutions:
+#  id: sonoff2
+#  plug_type: sonoff.basic
+#  board: esp01_1m
+#  display_name: "Sonoff1-Basic"
+#  relay_restore: "RESTORE_DEFAULT_OFF"
+#<<: !include "esphome_templates/sonoff.basic.yaml"
+
 captive_portal:
 
 status_led:

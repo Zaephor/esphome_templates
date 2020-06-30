@@ -4,6 +4,14 @@ sensor: !include_dir_merge_list nodemcu.v2.sensor
 
 # Custom-made garage door controller
 
+# nodemcu1-pending.yaml
+#substitutions:
+#  id: nodemcu1
+#  plug_type: nodemcu.v2
+#  board: nodemcuv2
+#  display_name: "Garage Door"
+#<<: !include "esphome_templates/nodemcu.v2.garagedoor.yaml"
+
 # Garage opening relay
 # Wired directly to the two wire leads of the garage, in parallel to any existing button control
 # Relay Signal -> NodeMCU Pin D1/GPIO5

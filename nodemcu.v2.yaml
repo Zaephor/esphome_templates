@@ -1,0 +1,14 @@
+<<: !include chip.esp8266.yaml
+<<: !include common.yaml
+sensor: !include_dir_merge_list nodemcu.v2.sensor
+
+# Generic just to put device on the wifi
+
+# nodemcu1-pending.yaml
+#substitutions:
+#  id: nodemcu1
+#  plug_type: nodemcu.v2
+#  board: nodemcuv2
+#  display_name: "nodemcu1"
+#<<: !include "esphome_templates/nodemcu.v2.yaml"
+

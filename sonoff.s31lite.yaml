@@ -2,6 +2,15 @@
 <<: !include common.yaml
 sensor: !include_dir_merge_list sonoff.s31lite.sensor
 
+# sonoff1-pending.yaml
+#substitutions:
+#  id: sonoff1
+#  plug_type: sonoff.s31lite
+#  board: esp01_1m
+#  display_name: "Sonoff1"
+#  relay_restore: "RESTORE_DEFAULT_OFF"
+#<<: !include "esphome_templates/sonoff.s31lite.yaml"
+
 status_led:
   pin:
     number: GPIO13

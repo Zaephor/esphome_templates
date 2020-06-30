@@ -1,0 +1,14 @@
+<<: !include chip.esp8266.yaml
+<<: !include common.yaml
+sensor: !include_dir_merge_list wemos.d1_mini.sensor
+
+# Generic just to put device on the wifi
+
+# wemos1-pending.yaml
+#substitutions:
+#  id: wemos1
+#  plug_type: wemos.d1_mini
+#  board: d1_mini
+#  display_name: "wemos1"
+#<<: !include "esphome_templates/wemos.d1_mini.yaml"
+

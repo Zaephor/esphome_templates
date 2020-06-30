@@ -2,6 +2,15 @@
 <<: !include common.yaml
 sensor: !include_dir_merge_list teckin.sp20.sensor
 
+# teckin1-powermeter.yaml
+#substitutions:
+#  id: teckin2
+#  plug_type: teckin.sp20
+#  board: esp01_1m
+#  display_name: "Teckin1"
+#  relay_restore: "ALWAYS_ON"
+#<<: !include "esphome_templates/teckin.sp20.powermeter.yaml"
+
 debug:
 
 logger:

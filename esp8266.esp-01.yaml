@@ -1,0 +1,13 @@
+<<: !include chip.esp8266.yaml
+<<: !include common.yaml
+sensor: !include_dir_merge_list esp8266.esp-01.sensor
+
+# Generic just to put device on the wifi
+# esp01_1-pending.yaml
+#substitutions:
+#  id: esp01_1
+#  plug_type: esp8266.esp-01
+#  #board: esp01
+#  #board: esp01_1m
+#  display_name: "esp01_1"
+#<<: !include "esphome_templates/esp8266.esp-01.yaml"
