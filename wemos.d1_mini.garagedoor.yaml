@@ -26,6 +26,7 @@ switch:
 # wemos 3v3 -> switch
 # switch -> 10k Ohm Resistor -> wemos gnd
 # switch -> wemos D5
+# Shortcut: I soldered a 10k Ohm Resister directly between Wemos D5 and Wemos GND, this allows direct bridging of D5 and 3v3 with the switch
 binary_sensor:
 - platform: gpio
   pin: D5
