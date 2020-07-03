@@ -19,8 +19,25 @@ sensor: !include_dir_merge_list wemos.d1_mini.sensor
 switch:
 - platform: gpio
   pin: D1
-  id: relay
+  id: relay_raw
+  internal: true
   restore_mode: "ALWAYS_OFF"
+
+# Momentary switch tmeplate
+- platform: template
+  id: relay
+  turn_on_action: &click
+  - if:
+      condition:
+          lambda: 'return !id(cooldown).state;'
+      then:
+      - binary_sensor.template.publish:
+          id: cooldown
+          state: ON
+      - switch.turn_on: relay_raw
+      - delay: 0.1s
+      - switch.turn_off: relay_raw
+  turn_off_action: *click
 
 # Some form of button to detect if garagedoor is closed
 # wemos 3v3 -> switch
@@ -30,7 +47,25 @@ switch:
 binary_sensor:
 - platform: gpio
   pin: D5
-  id: endstop_close
+  id: closed_sensor
+
+# This template is the cooldown to prevent spamming the button, currently set to 10s. Need to either make it configurable or time my garage
+- platform: template
+  id: cooldown
+  on_state:
+    then:
+    - if:
+        condition:
+          lambda: 'return id(cooldown).state;'
+        then:
+          - logger.log: "cooldown is active"
+          - delay: 10s
+          - binary_sensor.template.publish:
+              id: cooldown
+              state: OFF
+        else:
+          - logger.log: "The sensor is off?"
+
 
 cover:
 - platform: template
@@ -40,7 +75,7 @@ cover:
   has_position: false
 
   lambda: !lambda |-
-      if (id(endstop_close).state) {
+      if (id(closed_sensor).state) {
         return COVER_CLOSED;
       } else {
         return COVER_OPEN;
@@ -48,10 +83,6 @@ cover:
 
   open_action:
   - switch.turn_on: relay
-  - delay: 0.1s
-  - switch.turn_off: relay
 
   close_action:
-  - switch.turn_on: relay
-  - delay: 0.1s
   - switch.turn_off: relay
