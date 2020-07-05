@@ -10,6 +10,7 @@ sensor: !include_dir_merge_list wemos.d1_mini.sensor
 #  plug_type: wemos.d1_mini
 #  board: d1_mini
 #  display_name: "wemos1"
+#  garage_cooldown: "15"
 #<<: !include "esphome_templates/wemos.d1_mini.garagedoor.yaml"
 
 # Relay to trip the garage door
@@ -59,7 +60,7 @@ binary_sensor:
           lambda: 'return id(cooldown).state;'
         then:
           - logger.log: "cooldown is active"
-          - delay: 10s
+          - delay: "${garage_cooldown}s"
           - binary_sensor.template.publish:
               id: cooldown
               state: OFF
