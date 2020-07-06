@@ -11,10 +11,10 @@ sensor: !include_dir_merge_list teckin.sp20.sensor
 #  relay_restore: "ALWAYS_ON"
 #<<: !include "esphome_templates/teckin.sp20.powermeter.yaml"
 
-debug:
+#debug:
 
-logger:
-  level: debug
+#logger:
+#  level: debug
 
 # GPIO0 - red led
 # GPIO2 - blue led

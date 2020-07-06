@@ -11,10 +11,10 @@ sensor: !include_dir_merge_list teckin.sp20.sensor
 #  relay_restore: "RESTORE_DEFAULT_OFF"
 #<<: !include "esphome_templates/teckin.sp20.yaml"
 
-debug:
+#debug:
 
-logger:
-  level: debug
+#logger:
+#  level: debug
 
 # GPIO0 - red led
 # GPIO2 - blue led
