@@ -1,0 +1,26 @@
+<<: !include chip.esp32.yaml
+<<: !include common.yaml
+sensor: !include_dir_merge_list diymore.soilsensor
+
+# Generic just to put device on the wifi
+
+# https://www.diymore.cc/products/esp32-wifi-bluetooth-cp2104-dht11-soil-temperature-humidity-sensor-18650-battery-base?_pos=12&_sid=91a2b933c&_ss=r
+# https://www.aliexpress.com/item/4000112620669.html?spm=a2g0s.9042311.0.0.45b74c4dqdaU3B
+# 1 x ESP32 DHT11 CP2104 WIFI Bluetooth Temperature Humidity Soil Moisture Sensor Detection Module 18650 Battery Shield for Arduino 
+# 1.Bluetooth wifi development board, support for Nodumcu / for Arduino
+# 2.DHT11 temperature and humidity sensor
+# 3.CP2104 communication chip USB TO TTL
+# 4.Micro USB port
+# 5. Soil probe (long) soil temperature and humidity detection module
+# 6.18650 Lithium Battery Holder Powered
+# A for LG 3000mAH 18650 battery could make ESP32run 17 hours or more.
+# This capacitive soil moisture sensor differs from most of the resistive sensors on the market, using capacitive sensing principle to detect soil moisture. It avoids the problem that the resistance sensor is easy to corrode and greatly prolongs its working life.
+
+# diymore-cc.soilsensor.yaml
+#substitutions:
+#  id: diymore1
+#  plug_type: esp32.nodemcu-32s
+#  board: nodemcu-32s
+#  display_name: "diymore1"
+#<<: !include "esphome_templates/diymore.soilsensor.yaml"
+

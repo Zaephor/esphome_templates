@@ -1,0 +1,4 @@
+- platform: adc
+  pin: GPIO32
+  name: "${display_name} Soil Moisture Level"
+  update_interval: 60s
