@@ -3,9 +3,9 @@
   pin: GPIO16
   temperature:
     name: "${display_name} Temperature"
-    filters:
-    - lambda: return x * (9.0/5.0) + 32.0;
-    unit_of_measurement: "°F"
+#    filters:
+#    - lambda: return x * (9.0/5.0) + 32.0;
+#    unit_of_measurement: "°F"
   humidity:
     name: "${display_name} Humidity"
   update_interval: 60s
