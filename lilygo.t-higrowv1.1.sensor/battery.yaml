@@ -1,6 +1,6 @@
 - platform: adc
   pin: 33
-  name: "${display_name} Battery"
+  name: "${display_name} Voltage"
   attenuation: 11db
   unit_of_measurement: 'V'
   update_interval: 60s
