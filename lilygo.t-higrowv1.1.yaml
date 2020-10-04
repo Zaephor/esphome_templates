@@ -17,10 +17,11 @@ switch:
   internal: true
   setup_priority: 1000
 
-#binary_sensor:
-#  - platform: gpio
-#    pin: 
-#      number: GPIO35
-#      mode: INPUT_PULLUP
-#      inverted: True
-#    name: "${display_name} Button"
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: GPIO35
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${display_name} Button"
+    internal: true

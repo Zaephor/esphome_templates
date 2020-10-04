@@ -1,8 +1,9 @@
 - platform: dht
-  model: AUTO_DETECT
+  model: DHT11
   pin: GPIO16
   temperature:
     name: "${display_name} Temperature"
   humidity:
     name: "${display_name} Humidity"
   update_interval: 60s
+  setup_priority: -100
