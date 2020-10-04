@@ -2,12 +2,12 @@
   pin: GPIO34
   name: "${display_name} Soil Salinity"
   update_interval: 60s
-    unit_of_measurement: '%'
-    filters:
-    - sliding_window_moving_average:
-        window_size: 15
-        send_every: 15
-    - calibrate_linear:
-      # Map 0.0 (from sensor) to 0.0 (true value)
-      - 0.0 -> 0.0
-      - 1.1 -> 100.0
+  unit_of_measurement: '%'
+  filters:
+  - sliding_window_moving_average:
+      window_size: 15
+      send_every: 15
+  - calibrate_linear:
+    # Map 0.0 (from sensor) to 0.0 (true value)
+    - 0.0 -> 0.0
+    - 1.1 -> 100.0
