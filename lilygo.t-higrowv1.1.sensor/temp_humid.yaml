@@ -9,4 +9,3 @@
   humidity:
     name: "${display_name} Humidity"
   update_interval: 60s
-  setup_priority: -100
