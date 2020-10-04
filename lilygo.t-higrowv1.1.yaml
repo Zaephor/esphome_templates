@@ -1,0 +1,4 @@
+<<: !include chip.esp32.yaml
+<<: !include common.yaml
+sensor: !include_dir_merge_list lilygo.t-higrowv1.1.sensor
+
