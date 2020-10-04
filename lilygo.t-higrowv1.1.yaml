@@ -2,3 +2,23 @@
 <<: !include common.yaml
 sensor: !include_dir_merge_list lilygo.t-higrowv1.1.sensor
 
+i2c:
+  sda: 25
+  scl: 26
+  scan: True
+  id: bus_a
+
+switch:
+- platform: gpio
+  pin: 4
+  name: "enable_sensors"
+  restore_mode: ALWAYS_ON
+  internal: true
+
+#binary_sensor:
+#  - platform: gpio
+#    pin: 
+#      number: GPIO35
+#      mode: INPUT_PULLUP
+#      inverted: True
+#    name: "${display_name} Button"

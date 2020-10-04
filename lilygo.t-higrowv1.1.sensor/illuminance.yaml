@@ -1,0 +1,5 @@
+- platform: bh1750
+  i2c_id: bus_a
+  address: 0x23
+  name: "${display_name} Illuminance"
+  update_interval: 60s

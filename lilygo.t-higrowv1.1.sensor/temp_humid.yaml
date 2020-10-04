@@ -1,0 +1,8 @@
+- platform: dht
+  model: DHT12
+  pin: GPIO16
+  temperature:
+    name: "${display_name} Temperature"
+  humidity:
+    name: "${display_name} Humidity"
+  update_interval: 60s

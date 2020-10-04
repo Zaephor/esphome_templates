@@ -1,0 +1,12 @@
+- platform: adc
+  pin: 33
+  name: "${display_name} Battery"
+  attenuation: 11db
+  unit_of_measurement: 'V'
+  update_interval: 60s
+  filters:
+  - calibrate_linear:
+    # Map 0.0 (from sensor) to 0.0 (true value)
+    - 0.0 -> 0.0
+    - 2.06 -> 1.89
+  - lambda: return x * 2.0;
