@@ -7,6 +7,7 @@ i2c:
   scl: 26
   scan: True
   id: bus_a
+  setup_priority: -200
 
 switch:
 - platform: gpio
@@ -14,6 +15,7 @@ switch:
   name: "enable_sensors"
   restore_mode: ALWAYS_ON
   internal: true
+  setup_priority: 1000
 
 #binary_sensor:
 #  - platform: gpio

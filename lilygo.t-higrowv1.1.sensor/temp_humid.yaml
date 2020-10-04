@@ -1,4 +1,5 @@
-- platform: dht12
+- platform: dht
+  model: AUTO_DETECT
   pin: GPIO16
   temperature:
     name: "${display_name} Temperature"
