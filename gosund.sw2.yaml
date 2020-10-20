@@ -2,6 +2,15 @@
 <<: !include common.yaml
 sensor: !include_dir_merge_list gosund.sw2.sensor
 
+# gosund1-pending.yaml
+#substitutions:
+#  id: gosund1
+#  plug_type: gosund.sw2
+#  board: esp01_1m
+#  display_name: "Gosund1"
+#<<: !include "esphome_templates/gosund.sw2.yaml"
+
+
 status_led:
   pin:
     number: GPIO13
