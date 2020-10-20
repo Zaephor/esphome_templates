@@ -1,0 +1,37 @@
+<<: !include chip.esp8266.yaml
+<<: !include common.yaml
+sensor: !include_dir_merge_list gosund.sw2.sensor
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+output:
+  - id: white_led
+    platform: gpio
+    pin: GPIO12
+    inverted: true
+
+binary_sensor:
+  - platform: gpio
+    id: button
+    pin:
+      number: GPIO4
+      inverted: true
+    name: "${display_name} Button"
+    on_press:
+      - switch.toggle: relay
+    internal: true
+
+light:
+  - platform: custom
+    lambda: |-
+      auto light_out = new gosund::GosundLight(id(white_led));
+      App.register_component(light_out);
+      return {light_out};
+    lights:
+      - id: light_output
+        name: "${display_name} Light"
+        gamma_correct: 1.0
+        default_transition_length: 0s
