@@ -30,7 +30,7 @@ binary_sensor:
       inverted: true
     name: "${display_name} Button"
     on_press:
-      - switch.toggle: relay
+      - light.toggle: light_output
     internal: true
 
 light:
